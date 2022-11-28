@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public interface ServerService {
     //creation d un serveur dans Database
+    @SuppressWarnings("checkstyle:MissingJavadocMethod")
     Server create(Server server);
     Server ping(String ipAddress) throws IOException;
     Collection<Server> list(int limit);
