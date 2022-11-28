@@ -40,6 +40,7 @@ public class ServerServiceImplementation implements ServerService{
     public Server ping(String ipAddress) throws IOException {
         log.info("pinging a server : {}", ipAddress);
         log.info("ping Amina : {}", ipAddress);
+        log.info("ping Hind : {}", ipAddress);
         Server server = serverRepository.findByIpAddress(ipAddress);
         InetAddress address =InetAddress.getByName(ipAddress);
         server.setStatus(address.isReachable(10000) ? Status.SERVER_UP : Status.SERVER_DOWN);

@@ -40,10 +40,10 @@ public class ServerController {
     }
     @SuppressWarnings("checkstyle:MissingJavadocMethod")
     @GetMapping("/ping/{ipAddress}")
-    public ResponseEntity<Response> pingServer(@PathVariable("ipAddress") String ipAddress) throws IOException {
+    public ResponseEntity<com.example.without.Model.Response> pingServer(@PathVariable("ipAddress") String ipAddress) throws IOException {
         Server server = serverServiceImplementation.ping(ipAddress);
         return ResponseEntity.ok(
-                Response.builder()
+                com.example.without.Model.Response.builder()
                         .timeStamp(now())
                         .data(of("server", server))
                         .message(server.getStatus() == Status.SERVER_UP ? "ping success" : "ping failed")
@@ -55,9 +55,9 @@ public class ServerController {
         );
     }
     @PostMapping("/save")
-    public ResponseEntity<Response> saveServer(@RequestBody @Valid Server server) {
+    public ResponseEntity<com.example.without.Model.Response> saveServer(@RequestBody @Valid Server server) {
         return ResponseEntity.ok(
-                Response.builder()
+                com.example.without.Model.Response.builder()
                         .timeStamp(now())
                         .data(of("server", serverServiceImplementation.create(server)))
                         .message("server created")
@@ -84,10 +84,10 @@ public class ServerController {
         );
     }
     @DeleteMapping ("/delete/{id}")
-    public ResponseEntity<Response> deleteServer(@PathVariable("id") Long id) {
+    public ResponseEntity<com.example.without.Model.Response> deleteServer(@PathVariable("id") Long id) {
 
         return ResponseEntity.ok(
-                Response.builder()
+                com.example.without.Model.Response.builder()
                         .timeStamp(now())
                         .data(of("server", serverServiceImplementation.delete(id)))
                         .message("server deleted")
